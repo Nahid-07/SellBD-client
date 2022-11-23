@@ -27,7 +27,7 @@ const Navbar = () => {
 
   return (
     <div className="bg-[#293462] ">
-        <div className="navbar justify-between w-[1280px] mx-auto py-7">
+        <div className="navbar justify-between py-7">
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
