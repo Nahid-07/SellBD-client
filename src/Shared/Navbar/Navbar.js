@@ -82,7 +82,7 @@ const Navbar = () => {
               {menu}
             </ul>
           </div>
-          <Link className="btn btn-ghost normal-case text-white text-xl">
+          <Link to='/' className="btn btn-ghost normal-case text-white text-xl">
             SellBD
           </Link>
         </div>

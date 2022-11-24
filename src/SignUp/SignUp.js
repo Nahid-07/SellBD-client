@@ -5,7 +5,7 @@ import { AuthProvider } from "../Context/Context";
 
 const SignUp = () => {
   const { register, handleSubmit } = useForm();
-  const {createUser,updateUser} = useContext(AuthProvider)
+  const {createUser,updateUser,googleLogin} = useContext(AuthProvider)
   const handleSignUp = (data) => {
     createUser(data.email,data.password)
     .then(result=>{
@@ -21,8 +21,15 @@ const SignUp = () => {
     })
     console.log(data);
   };
+  const handleGoogleLogIn = ()=>{
+    googleLogin()
+    .then(result => {
+      const user = result.user;
+      console.log(user);
+    }).catch(err => console.log(err.message))
+  }
   return (
-    <div className="max-w-7xl mx-auto flex justify-center items-center">
+    <div className="max-w-7xl mx-auto flex justify-center items-center px-4">
       <form className="w-96 my-28" onSubmit={handleSubmit(handleSignUp)}>
         <h1 className="text-3xl font-medium text-center">Sign Up</h1>
         <div className="form-control w-full">
@@ -75,6 +82,7 @@ const SignUp = () => {
         <div className="divider">OR</div>
         <div className="mt-5">
           <button
+          onClick={handleGoogleLogIn}
             type="submit"
             className="btn btn-outline hover:bg-[#293462] w-full"
           >
