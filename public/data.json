@@ -2,7 +2,7 @@
   {
     "id": 1,
     "CategoryName": "Samsung mobile phones",
-    "categoryImg" : "https://bsmedia.business-standard.com/_media/bs/img/about-page/1562575696.png",
+    "categoryImg" : "https://i.ibb.co/2ZHVrYf/samsung.jpg",
     "products": [
       {
         "name": "Samsung Galaxy",
@@ -72,7 +72,7 @@
   {
     "id": 2,
     "CategoryName": "Xioami Mobile phones",
-    "categoryImg" : "https://pbs.twimg.com/profile_images/1384363472259928071/zXb55Bwo_400x400.jpg",
+    "categoryImg" : "https://i.ibb.co/5jSc4Hd/xiaomi-logo.jpg",
     "products": [
       {
         "name": "Mi Mix-2",
@@ -142,7 +142,7 @@
   {
     "id": 3,
     "CategoryName": "iPhone Mobile phones",
-    "categoryImg" : "https://s3-symbol-logo.tradingview.com/apple--600.png",
+    "categoryImg" : "https://i.ibb.co/Ht4WcLM/apple.jpg",
     "products": [
       {
         "name": "iPhone 8",
