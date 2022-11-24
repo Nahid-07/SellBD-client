@@ -1,10 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthProvider } from "../Context/Context";
 
 const SignUp = () => {
   const { register, handleSubmit } = useForm();
-  const handleSignUp = () => {};
+  const {createUser} = useContext(AuthProvider)
+  const handleSignUp = (data) => {
+    createUser(data.email,data.password)
+    .then(result=>{
+      const user=result.user
+      console.log(user);
+    })
+    .catch(err =>{
+      console.log(err.message);
+    })
+    console.log(data);
+  };
   return (
     <div className="max-w-7xl mx-auto flex justify-center items-center">
       <form className="w-96 my-28" onSubmit={handleSubmit(handleSignUp)}>
@@ -43,7 +55,7 @@ const SignUp = () => {
           <label className="label">
             <span className="label-text">User Type</span>
           </label>
-          <select className="select select-bordered w-full">
+          <select {...register("userType", { required: true })} className="select select-bordered w-full">
             <option>Seller</option>
             <option selected>User</option>
           </select>
