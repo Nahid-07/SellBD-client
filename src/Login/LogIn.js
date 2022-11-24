@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { AuthProvider } from '../Context/Context';
 
@@ -11,6 +12,7 @@ const LogIn = () => {
       .then(result => {
         const user = result.user;
         console.log(user)
+        toast('Successfully logged in')
       })
       .catch(err => console.log(err))
     }

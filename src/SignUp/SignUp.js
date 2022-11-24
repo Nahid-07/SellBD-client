@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { AuthProvider } from "../Context/Context";
 
@@ -12,7 +13,7 @@ const SignUp = () => {
       const user=result.user;
       updateUser(data.fullName)
       .then(()=>{
-
+          toast('Account created successfully')
       }).catch(err => console.log(err))
       console.log(user);
     })

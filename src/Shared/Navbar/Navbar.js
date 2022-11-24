@@ -35,7 +35,7 @@ const Navbar = () => {
       {user?.email ? (
         <li>
           <Link className="text-white" to="/">
-            <button className="btn btn-ghost" onClick={handleLogOut}>Log out</button>
+            <button onClick={handleLogOut}>Log out</button>
           </Link>
         </li>
       ) : (
@@ -56,7 +56,7 @@ const Navbar = () => {
 
   return (
     <div className="bg-[#293462] ">
-      <div className="navbar justify-between py-7">
+      <div className="navbar justify-between py-5">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
