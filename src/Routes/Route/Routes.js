@@ -5,6 +5,7 @@ import Phones from "../../Home/productCategory/Phones";
 import Main from "../../Layout/Main";
 import LogIn from "../../Login/LogIn";
 import SignUp from "../../SignUp/SignUp";
+import PrivetRouter from "../PrivetRouter/PrivetRouter";
 
 const router = createBrowserRouter([
     {
@@ -24,13 +25,14 @@ const router = createBrowserRouter([
             },
             {
                 path:'/phones/:id',
-                element: <Phones></Phones>,
+                element: <PrivetRouter><Phones></Phones></PrivetRouter>,
                 loader:({params})=>fetch(`data.json/phones/${params.id}`)
             },
             {
                 path:'/blogs',
                 element: <Blogs></Blogs>
             },
+            
 
         ]
     }

@@ -31,6 +31,11 @@ const Navbar = () => {
           Users
         </Link>
       </li>
+      <li>
+        <Link className="text-white" to="/blogs">
+          Blog
+        </Link>
+      </li>
 
       {user?.email ? (
         <li>
@@ -45,12 +50,6 @@ const Navbar = () => {
           </Link>
         </li>
       )}
-
-      <li>
-        <Link className="text-white" to="/blogs">
-          Blog
-        </Link>
-      </li>
     </>
   );
 

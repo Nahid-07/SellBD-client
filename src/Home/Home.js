@@ -1,7 +1,6 @@
 import React from 'react';
 import Banner from './Banner/Banner';
 import Opinion from './CustommerOpinion/Opinion';
-import DiscountBanner from './DiscountBanner/DiscountBanner';
 // import Carousel from './carousel/Carousel';
 import Categories from './productCategory/Categories';
 
