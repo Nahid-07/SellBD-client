@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthProvider } from "../Context/Context";
 
 const SignUp = () => {
   const { register, handleSubmit } = useForm();
   const {createUser,updateUser,googleLogin} = useContext(AuthProvider)
+  const navigate = useNavigate()
   const handleSignUp = (data) => {
     createUser(data.email,data.password)
     .then(result=>{
@@ -14,6 +15,8 @@ const SignUp = () => {
       updateUser(data.fullName)
       .then(()=>{
           toast('Account created successfully')
+          saveUserToDB(data.fullName,data.email,data.userType)
+          navigate('/')
       }).catch(err => console.log(err))
       console.log(user);
     })
@@ -28,6 +31,21 @@ const SignUp = () => {
       const user = result.user;
       console.log(user);
     }).catch(err => console.log(err.message))
+  }
+
+  const saveUserToDB =(name,email,userType)=>{
+    const userInfo = {name,email,userType}
+    fetch('http://localhost:5000/users',{
+      method:"POST",
+      headers:{
+        "content-type" : "application/json"
+      },
+      body: JSON.stringify(userInfo)
+    })
+    .then(res=> res.json())
+    .then(data => {
+      console.log(data)
+    })
   }
   return (
     <div className="max-w-7xl mx-auto flex justify-center items-center px-4">

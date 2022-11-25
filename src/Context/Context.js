@@ -10,10 +10,12 @@ const Context = ({children}) => {
     const [loader, setLoader] = useState(true);
     // Creating User
     const createUser = (email,password)=>{
+        setLoader(true)
         return createUserWithEmailAndPassword(auth,email,password)
     }
     // Login user
     const logIn = (email,password)=>{
+        setLoader(true)
         return signInWithEmailAndPassword(auth,email,password)
     }
     // Google log in
@@ -33,6 +35,7 @@ const Context = ({children}) => {
     useEffect(()=>{
         const unsubscribe = onAuthStateChanged(auth,currentUser=>{
             setUser(currentUser)
+            setLoader(false)
         });
         return()=> unsubscribe()
     },[])
@@ -41,7 +44,8 @@ const Context = ({children}) => {
         createUser,updateUser,
         logIn,
         logOut,
-        googleLogin
+        googleLogin,
+        loader
     }
     return (
         <AuthProvider.Provider value={authInfo}>

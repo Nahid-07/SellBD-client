@@ -17,11 +17,6 @@ const Navbar = () => {
         </Link>
       </li>
       <li>
-        <Link className="text-white" to="/category">
-          Category
-        </Link>
-      </li>
-      <li>
         <Link className="text-white" to="/dashbord">
           Dashbord
         </Link>
