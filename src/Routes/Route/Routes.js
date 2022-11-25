@@ -6,6 +6,7 @@ import DashBordLayOut from "../../Layout/dash/DashBordLayOut";
 import Main from "../../Layout/Main";
 import LogIn from "../../Login/LogIn";
 import Dashbord from "../../Pages/Dashbord/Dashbord";
+import MyBuyers from "../../Pages/Dashbord/myBuyers/MyBuyers";
 import SignUp from "../../SignUp/SignUp";
 import PrivetRouter from "../PrivetRouter/PrivetRouter";
 
@@ -37,7 +38,12 @@ const router = createBrowserRouter([
         ]
     },
     {
-        path: '/dashbord', element:<DashBordLayOut></DashBordLayOut>
+        path: '/dashbord', element:<DashBordLayOut></DashBordLayOut>,
+        children:[
+            {
+                path : '/dashbord/mybuyers', element: <MyBuyers></MyBuyers>
+            }
+        ]
     }
 ])
 export default router
