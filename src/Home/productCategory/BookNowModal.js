@@ -20,7 +20,21 @@ const BookNowModal = ({ products}) => {
       number,
     };
     console.log(buyerInfo);
-    form.reset()
+    fetch('http://localhost:5000/buyer',{
+      method : "POST",
+      headers:{
+        "content-type" : "application/json"
+      },
+      body: JSON.stringify(buyerInfo)
+    })
+    .then(res => res.json())
+    .then(data => {
+      if(data.acknowledged){
+        form.reset()
+
+      };
+    })
+
   };
   return (
     <div>
