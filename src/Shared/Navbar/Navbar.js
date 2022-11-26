@@ -17,7 +17,7 @@ const Navbar = () => {
         </Link>
       </li>
       <li>
-        <Link className="text-white" to="/dashbord">
+        <Link className="text-white" to="/dashbord/mybuyers">
           Dashbord
         </Link>
       </li>

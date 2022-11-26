@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { AuthProvider } from "../../Context/Context";
 
-const BookNowModal = ({ products}) => {
+const BookNowModal = ({phone}) => {
+  console.log(phone.name);
   const { user } = useContext(AuthProvider);
   // console.log(products);
   const handleSubmit = (e) => {
@@ -38,8 +39,7 @@ const BookNowModal = ({ products}) => {
   };
   return (
     <div>
-      {products.map((prod, index) => (
-        <form onSubmit={handleSubmit} key={index}>
+      <form onSubmit={handleSubmit} >
           <input type="checkbox" id="bookNow" className="modal-toggle" />
           <div className="modal">
             <div className="modal-box relative">
@@ -49,7 +49,7 @@ const BookNowModal = ({ products}) => {
               >
                 ✕
               </label>
-              <h3 className="text-lg font-bold">{prod.name}</h3>
+              <h3 className="text-lg font-bold">{phone.name}</h3>
               <div className="py-4 grid gap-4">
                 <input
                   name="name"
@@ -71,7 +71,7 @@ const BookNowModal = ({ products}) => {
                   name="productName"
                   type="text"
                   placeholder="Type here"
-                  defaultValue={prod.name}
+                  defaultValue={phone.name}
                   className="input input-bordered w-full"
                 />
                 <input
@@ -94,7 +94,6 @@ const BookNowModal = ({ products}) => {
             </div>
           </div>
         </form>
-      ))}
     </div>
   );
 };

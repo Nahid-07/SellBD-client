@@ -18,7 +18,10 @@ const DashBordLayOut = () => {
               <Link to='/dashbord/mybuyers'>My buyers</Link>
             </li>
             <li>
-              <a>Sidebar Item 2</a>
+              <Link to='/dashbord/myproducts'>My products</Link>
+            </li>
+            <li>
+              <Link to='/dashbord/addproduct'>Add product</Link>
             </li>
           </ul>
         </div>

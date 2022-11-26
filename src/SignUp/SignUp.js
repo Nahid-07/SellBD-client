@@ -29,7 +29,8 @@ const SignUp = () => {
     googleLogin()
     .then(result => {
       const user = result.user;
-      console.log(user);
+      saveUserToDB(user.email,user.displayName,'Buyer')
+      console.log(user.email);
     }).catch(err => console.log(err.message))
   }
 
@@ -87,7 +88,7 @@ const SignUp = () => {
           </label>
           <select {...register("userType", { required: true })} className="select select-bordered w-full">
             <option>Seller</option>
-            <option selected>User</option>
+            <option selected>Buyer</option>
           </select>
         </div>
         <div className="mt-5">
