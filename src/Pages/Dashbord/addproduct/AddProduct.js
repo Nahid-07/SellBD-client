@@ -1,4 +1,5 @@
 import React from "react";
+import toast from "react-hot-toast";
 
 const AddProduct = () => {
   const handleSubmit = (e) => {
@@ -34,8 +35,14 @@ const AddProduct = () => {
             "content-type" : "application/json"
         },
         body: JSON.stringify(item)
-    }).then(res => res.json()).then(data => console.log(data))
-    console.log(item);
+    }).then(res => res.json()).then(data => {
+      console.log(data);
+      if(data.acknowledged){
+        toast.success('Your product has been added')
+      }
+    })
+    // console.log(item);
+    form.reset()
   };
   return (
     <div className="lg:w-1/2 mx-auto px-5">
@@ -47,36 +54,42 @@ const AddProduct = () => {
             type="text"
             placeholder="product Name"
             className="input input-bordered w-full"
+            required
           />
           <input
             name="model"
             type="text"
             placeholder="model"
             className="input input-bordered w-full"
+            required
           />
           <input
             name="img"
             type="text"
             placeholder="Image URL"
             className="input input-bordered w-full"
+            required
           />
           <input
             name="condition"
             type="text"
             placeholder="condition"
             className="input input-bordered w-full"
+            required
           />
           <input
             name="number"
             type="text"
             placeholder="number"
             className="input input-bordered w-full"
+            required
           />
           <input
             name="location"
             type="text"
             placeholder="location"
             className="input input-bordered w-full"
+            required
           />
 
           <input
@@ -84,24 +97,28 @@ const AddProduct = () => {
             type="text"
             placeholder="buyRate"
             className="input input-bordered w-full"
+            required
           />
           <input
             name="sellRate"
             type="text"
             placeholder="sell Rate"
             className="input input-bordered w-full"
+            required
           />
           <input
             name="uses"
             type="text"
             placeholder="Used of year"
             className="input input-bordered w-full"
+            required
           />
           <input
             name="sellerName"
             type="text"
             placeholder="seller Name"
             className="input input-bordered w-full"
+            required
           />
           <select name="prodCate" className="select select-bordered w-full ">
             <option value="63817d0110d01449e6334983">Samsung mobile phones</option>
@@ -112,6 +129,7 @@ const AddProduct = () => {
         <textarea
           className="textarea textarea-bordered w-full mt-6"
           placeholder="Short description"
+          required
         ></textarea>
         <button type="submit" className="bg-[#293462] btn w-full my-6">
           {" "}

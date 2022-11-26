@@ -4,7 +4,7 @@ import Phones from './Phones';
 
 const AllCategoryPhones = () => {
     const allphones = useLoaderData()
-    console.log(allphones);
+    // console.log(allphones);
     return (
         <div className='container mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
             {

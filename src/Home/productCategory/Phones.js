@@ -1,5 +1,5 @@
 // import { useLoaderData } from "react-router-dom";
-import { useState } from "react";
+// import { useState } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import BookNowModal from "./BookNowModal";
 

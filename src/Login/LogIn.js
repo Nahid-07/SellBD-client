@@ -1,25 +1,32 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthProvider } from "../Context/Context";
+import Loader from "../Loader/Loader";
 
 
 const LogIn = () => {
   const { register, handleSubmit } = useForm();
-  const { logIn, googleLogin } = useContext(AuthProvider);
+  const { logIn, googleLogin,loader } = useContext(AuthProvider);
+  const [error,setError] = useState('')
   const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
   const handleLogin = (data) => {
     logIn(data.email, data.password)
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-        toast("Successfully logged in");
+      .then(() => {
+        // console.log(user);
+        if(loader){
+          return <Loader></Loader>
+        }
         navigate(from, { replace: true });
+        toast.success('Successfully logged in')
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        setError(err.message)
+      });
+      setError('')
   };
   const handleGoogleLogIn = () => {
     googleLogin()
@@ -43,7 +50,9 @@ const LogIn = () => {
             type="text"
             placeholder="Email"
             className="input input-bordered w-full "
+            required
           />
+          <p className="text-red-600">{error}</p>
         </div>
         <div className="form-control w-full">
           <label className="label">
@@ -55,6 +64,7 @@ const LogIn = () => {
             className="input input-bordered w-full"
             {...register("password", { required: true })}
           />
+          <p className="text-red-600">{error}</p>
         </div>
         <div className="mt-5">
           <button type="submit" className="btn  bg-[#293462] w-full">

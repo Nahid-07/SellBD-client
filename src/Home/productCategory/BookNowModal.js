@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import toast from "react-hot-toast";
 import { AuthProvider } from "../../Context/Context";
 
 const BookNowModal = ({phone}) => {
@@ -32,6 +33,7 @@ const BookNowModal = ({phone}) => {
     .then(data => {
       if(data.acknowledged){
         form.reset()
+        toast.success('Item booked')
 
       };
     })
@@ -79,12 +81,14 @@ const BookNowModal = ({phone}) => {
                   type="text"
                   placeholder="Your Address"
                   className="input input-bordered w-full"
+                  required
                 />
                 <input
                   name="number"
                   type="text"
                   placeholder="Your phone number"
                   className="input input-bordered w-full"
+                  required
                 />
               </div>
 

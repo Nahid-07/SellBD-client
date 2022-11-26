@@ -3,20 +3,25 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthProvider } from "../Context/Context";
+import Loader from "../Loader/Loader";
 
 const SignUp = () => {
   const { register, handleSubmit } = useForm();
-  const {createUser,updateUser,googleLogin} = useContext(AuthProvider)
+  const {createUser,updateUser,googleLogin,loader} = useContext(AuthProvider)
   const navigate = useNavigate()
   const handleSignUp = (data) => {
+
     createUser(data.email,data.password)
     .then(result=>{
       const user=result.user;
       updateUser(data.fullName)
       .then(()=>{
-          toast('Account created successfully')
+        if(loader){
+          return <Loader></Loader>
+        }
           saveUserToDB(data.fullName,data.email,data.userType)
           navigate('/')
+          toast.success('Successfully signed up')
       }).catch(err => console.log(err))
       console.log(user);
     })
@@ -81,6 +86,7 @@ const SignUp = () => {
             className="input input-bordered w-full"
             {...register("password", { required: true })}
           />
+          
         </div>
         <div className="form-control w-full">
           <label className="label">
