@@ -20,6 +20,8 @@ const BookNowModal = ({phone}) => {
       productName,
       address,
       number,
+      img : phone.img,
+      price : phone.sellingPrice
     };
     console.log(buyerInfo);
     fetch('http://localhost:5000/buyer',{
