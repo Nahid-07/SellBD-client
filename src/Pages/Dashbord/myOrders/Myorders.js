@@ -1,22 +1,29 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import { AuthProvider } from "../../../Context/Context";
+import Loader from "../../../Loader/Loader";
 
 const Myorders = () => {
-  const { user } = useContext(AuthProvider);
-  const { data: myOrders } = useQuery(
+  const { user,loader } = useContext(AuthProvider);
+  const { data: myOrders= []} = useQuery(
     {
-      queryKey: ["myOrders"],
+      queryKey: ["myOrders", user?.email],
       queryFn: async () => {
         const res = await fetch(
-          `http://localhost:5000/myorders?email=${user?.email}`
-        );
+          `http://localhost:5000/myorders?email=${user?.email}`,{
+            headers : {
+                authorization : `bearer ${localStorage.getItem('Token')}`
+            }
+          });
         const data = await res.json();
-        return data;
+        return data
       },
-    },
-    [user?.email]
+    }
+    
   );
+  if(loader){
+    return <Loader></Loader>
+  }
   return (
     <div className="overflow-x-auto w-full">
       <table className="table w-full">

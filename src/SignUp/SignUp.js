@@ -1,27 +1,30 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthProvider } from "../Context/Context";
+import useToken from "../Hooks/usehook";
 import Loader from "../Loader/Loader";
 
 const SignUp = () => {
   const { register, handleSubmit } = useForm();
   const { createUser, updateUser, googleLogin, loader } =
     useContext(AuthProvider);
-  const navigate = useNavigate();
+    const [createdUserEmail, setCreatedUserEmail] = useState('')
+    const [token] = useToken(createdUserEmail);
+    const navigate = useNavigate();
+
+    if(token){
+        navigate('/');
+    }
   const handleSignUp = (data) => {
     createUser(data.email, data.password)
       .then((result) => {
         const user = result.user;
         updateUser(data.fullName)
           .then(() => {
-            if (loader) {
-              return <Loader></Loader>;
-            }
             saveUserToDB(data.fullName, data.email, data.userType);
-            getUserToken(data.email);
-            navigate("/");
+            setCreatedUserEmail(data.email)
             toast.success("Successfully signed up");
           })
           .catch((err) => console.log(err));
@@ -38,6 +41,7 @@ const SignUp = () => {
         const user = result.user;
         saveUserToDB(user.email, user.displayName, "Buyer");
         console.log(user.email);
+        navigate('/')
       })
       .catch((err) => console.log(err.message));
   };
@@ -56,17 +60,9 @@ const SignUp = () => {
         console.log(data);
       });
   };
-
-  const getUserToken = (email) => {
-    fetch(`http://localhost:5000/jwt?email=${email}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        if (data.accessToken) {
-          localStorage.setItem("Token", data.accessToken);
-        }
-      });
-  };
+  if (loader) {
+    return <Loader></Loader>;
+  }
   return (
     <div className="max-w-7xl mx-auto flex justify-center items-center px-4">
       <form className="w-96 my-28" onSubmit={handleSubmit(handleSignUp)}>

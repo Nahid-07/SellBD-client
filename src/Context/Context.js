@@ -20,6 +20,7 @@ const Context = ({children}) => {
     }
     // Google log in
     const googleLogin = ()=>{
+        setLoader(true)
         return signInWithPopup(auth, googleProvider)
     }
     // updating User Info

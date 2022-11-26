@@ -16,11 +16,14 @@ const Navbar = () => {
           Home
         </Link>
       </li>
-      <li>
+      {
+        user?.email && 
+        <li>
         <Link className="text-white" to="/dashbord/mybuyers">
           Dashbord
         </Link>
-      </li>
+      </li> 
+      }
       <li>
         <Link className="text-white" to="/users">
           Users

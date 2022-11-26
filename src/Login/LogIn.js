@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthProvider } from "../Context/Context";
+import useToken from "../Hooks/usehook";
 import Loader from "../Loader/Loader";
 
 
@@ -10,17 +11,20 @@ const LogIn = () => {
   const { register, handleSubmit } = useForm();
   const { logIn, googleLogin,loader } = useContext(AuthProvider);
   const [error,setError] = useState('')
-  const navigate = useNavigate();
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
+  const [createdUserEmail, setCreatedUserEmail] = useState('')
+    const [token] = useToken(createdUserEmail);
+    const navigate = useNavigate();
+
+    if(token){
+      navigate(from, { replace: true });
+    }
   const handleLogin = (data) => {
     logIn(data.email, data.password)
       .then(() => {
-        // console.log(user);
-        if(loader){
-          return <Loader></Loader>
-        }
-        navigate(from, { replace: true });
+        setCreatedUserEmail(data.email)
+        
         toast.success('Successfully logged in')
       })
       .catch((err) => {
@@ -31,12 +35,14 @@ const LogIn = () => {
   const handleGoogleLogIn = () => {
     googleLogin()
       .then((result) => {
-        const user = result.user;
-        console.log(user);
+        // const user = result.user;
         navigate(from, { replace: true });
       })
       .catch((err) => console.log(err.message));
   };
+  if(loader){
+    return <Loader></Loader>
+  }
   return (
     <div className="max-w-7xl mx-auto flex justify-center items-center px-4">
       <form className="w-96 my-28" onSubmit={handleSubmit(handleLogin)}>
