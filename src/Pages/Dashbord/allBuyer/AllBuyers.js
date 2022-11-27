@@ -1,14 +1,31 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
+// import axios from 'axios';
+// import React, { useEffect, useState } from 'react';
 
 const AllBuyers = () => {
-    const [buyers, setBuyers] = useState([]);
-    useEffect(()=>{
-        axios.get('http://localhost:5000/users/buyer')
-        .then(res=> {
-            setBuyers(res.data)
-        })
-    },[])
+  const {data : buyers=[], refetch} = useQuery({
+    queryKey:['buyer'],
+    queryFn:async()=>{
+      const res = await fetch(`http://localhost:5000/users/buyer`)
+      const data = await res.json()
+      return data
+    }
+  })
+
+    // Buyer will delete after hitting ta api
+
+    const handleDelete = id =>{
+      fetch(`http://localhost:5000/allbuyer/${id}`,{
+        method : "DELETE"
+      })
+      .then(res => res.json())
+      .then(data =>{
+        if(data.deletedCount > 0){
+          const remainingUser = buyers.filter(buyer => buyer._id !== id)
+          refetch(remainingUser)
+        }
+      })
+    }
     console.log(buyers);
     return (
         <div className="overflow-x-auto">
@@ -28,7 +45,7 @@ const AllBuyers = () => {
                   <td>{buyer.name}</td>
                   <td>{buyer.email}</td>
                   <td>
-                      <button className='btn btn-sm bg-red-700'>Delete</button>
+                      <button onClick={()=>handleDelete(buyer._id)} className='btn btn-sm bg-red-700'>Delete</button>
                   </td>
                 </tr>)
             }
