@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
 const AllUsers = () => {
+  
   const {data : users=[],refetch } =useQuery({
     queryKey:['users'],
     queryFn: async()=>{
@@ -10,6 +11,7 @@ const AllUsers = () => {
         return data
     }
   })
+
   const handleAdmin =(id)=>{
         fetch(`http://localhost:5000/users/admin/${id}`,{
             method : "PUT",

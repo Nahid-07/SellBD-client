@@ -4,7 +4,7 @@ import { FaArrowRight } from "react-icons/fa";
 import BookNowModal from "./BookNowModal";
 
 const Phones = ({phone}) => {
-  console.log(phone);
+  // console.log(phone);
   return (
     <div>
       <div className="max-w-lg p-4 shadow-md ">

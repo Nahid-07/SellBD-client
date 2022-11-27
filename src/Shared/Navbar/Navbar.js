@@ -25,11 +25,6 @@ const Navbar = () => {
       </li> 
       }
       <li>
-        <Link className="text-white" to="/users">
-          Users
-        </Link>
-      </li>
-      <li>
         <Link className="text-white" to="/blogs">
           Blog
         </Link>

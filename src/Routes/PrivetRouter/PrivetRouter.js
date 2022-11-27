@@ -2,7 +2,6 @@ import React, { useContext } from "react";
 import { Navigate, useLocation } from "react-router-dom";
 import { AuthProvider } from "../../Context/Context";
 // import { BallTriangle } from "react-loader-spinner";
-import { RingLoader } from "react-spinners";
 import Loader from "../../Loader/Loader";
 
 const PrivetRouter = ({ children }) => {

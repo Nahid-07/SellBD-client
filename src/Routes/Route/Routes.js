@@ -13,6 +13,7 @@ import AllUsers from '../../Pages/Dashbord/AllUsers/AllUsers'
 import AdminRoute from "../PrivetRouter/AdminRouter/AdminRoute";
 import AllSeller from "../../Pages/Dashbord/AllSeller/AllSeller";
 import AllBuyers from "../../Pages/Dashbord/allBuyer/AllBuyers";
+import Payment from "../../Pages/Dashbord/myOrders/payment/Payment";
 
 const router = createBrowserRouter([
     {
@@ -54,10 +55,14 @@ const router = createBrowserRouter([
                 path : '/dashbord/addproduct', element: <AddProduct></AddProduct>
             },
             {
-                path : '/dashbord/seller', element: <AllSeller></AllSeller>
+                path : '/dashbord/seller', element: <AdminRoute><AllSeller></AllSeller></AdminRoute>
             },
             {
-                path : '/dashbord/buyers', element: <AllBuyers></AllBuyers>
+                path : '/dashbord/buyers', element: <AdminRoute><AllBuyers></AllBuyers></AdminRoute>
+            },
+            {
+                path : '/dashbord/payment/:id', element: <Payment></Payment>,
+                loader : ({params})=> fetch(`http://localhost:5000/bookings/${params.id}`)
             },
         ]
     }
