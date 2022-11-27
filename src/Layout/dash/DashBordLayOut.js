@@ -21,33 +21,33 @@ const DashBordLayOut = () => {
         </div>
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-          <ul className="menu p-4 w-80 bg-base-100 text-base-content">
+          <ul className="menu p-4 w-80 bg-slate-100 text-base-content">
             {isAdmin && (
               <>
-                <li>
+                <li className="border-b-2 border-[#293462]">
                   <Link to="/dashbord/allusers">All users</Link>
                 </li>
-                <li>
+                <li className="border-b-2 border-[#293462]">
                   <Link to="/dashbord/seller">All seller</Link>
                 </li>
-                <li>
+                <li className="border-b-2 border-[#293462]">
                   <Link to="/dashbord/buyers">All Buyer</Link>
                 </li>
               </>
             )}
 
             {
-              isBuyers && <li>
+              isBuyers && <li className="border-b-2 border-[#293462]">
               <Link to="/dashbord/myorders">My Orders</Link>
             </li>
             }
 
             {isSellers && (
               <>
-                <li>
+                <li className="border-b-2 border-[#293462]">
                   <Link to="/dashbord/addproduct">Add product</Link>
                 </li>
-                <li>
+                <li className="border-b-2 border-[#293462]">
                   <Link to="/dashbord/myproducts">My Products</Link>
                 </li>
               </>
