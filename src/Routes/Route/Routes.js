@@ -11,6 +11,7 @@ import SignUp from "../../SignUp/SignUp";
 import PrivetRouter from "../PrivetRouter/PrivetRouter";
 import AllUsers from '../../Pages/Dashbord/AllUsers/AllUsers'
 import AdminRoute from "../PrivetRouter/AdminRouter/AdminRoute";
+import AllSeller from "../../Pages/Dashbord/AllSeller/AllSeller";
 
 const router = createBrowserRouter([
     {
@@ -50,6 +51,9 @@ const router = createBrowserRouter([
             },
             {
                 path : '/dashbord/addproduct', element: <AddProduct></AddProduct>
+            },
+            {
+                path : '/dashbord/seller', element: <AllSeller></AllSeller>
             },
         ]
     }
