@@ -6,10 +6,11 @@ import DashBordLayOut from "../../Layout/dash/DashBordLayOut";
 import Main from "../../Layout/Main";
 import LogIn from "../../Login/LogIn";
 import AddProduct from "../../Pages/Dashbord/addproduct/AddProduct";
-import MyBuyers from "../../Pages/Dashbord/myBuyers/MyBuyers";
 import Myorders from "../../Pages/Dashbord/myOrders/Myorders";
 import SignUp from "../../SignUp/SignUp";
 import PrivetRouter from "../PrivetRouter/PrivetRouter";
+import AllUsers from '../../Pages/Dashbord/AllUsers/AllUsers'
+import AdminRoute from "../PrivetRouter/AdminRouter/AdminRoute";
 
 const router = createBrowserRouter([
     {
@@ -42,7 +43,7 @@ const router = createBrowserRouter([
         path: '/dashbord', element:<DashBordLayOut></DashBordLayOut>,
         children:[
             {
-                path : '/dashbord/mybuyers', element: <MyBuyers></MyBuyers>
+                path : '/dashbord/allusers', element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
             },
             {
                 path : '/dashbord/myorders', element: <Myorders></Myorders>

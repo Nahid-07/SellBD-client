@@ -19,7 +19,7 @@ const Navbar = () => {
       {
         user?.email && 
         <li>
-        <Link className="text-white" to="/dashbord/mybuyers">
+        <Link className="text-white" to="/dashbord/myorders">
           Dashbord
         </Link>
       </li> 
