@@ -14,10 +14,12 @@ import AdminRoute from "../PrivetRouter/AdminRouter/AdminRoute";
 import AllSeller from "../../Pages/Dashbord/AllSeller/AllSeller";
 import AllBuyers from "../../Pages/Dashbord/allBuyer/AllBuyers";
 import Payment from "../../Pages/Dashbord/myOrders/payment/Payment";
+import ErrorPage from '../../ErrorPage/ErrorPage'
 
 const router = createBrowserRouter([
     {
         path:'/',element:<Main></Main>,
+        errorElement: <ErrorPage></ErrorPage>,
         children:[
             {
                 path:'/',
@@ -44,6 +46,7 @@ const router = createBrowserRouter([
     },
     {
         path: '/dashbord', element:<DashBordLayOut></DashBordLayOut>,
+        errorElement: <ErrorPage></ErrorPage>,
         children:[
             {
                 path : '/dashbord/allusers', element: <AdminRoute><AllUsers></AllUsers></AdminRoute>
