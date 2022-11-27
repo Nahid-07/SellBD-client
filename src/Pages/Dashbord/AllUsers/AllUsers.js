@@ -1,10 +1,7 @@
-import { async } from "@firebase/util";
 import { useQuery } from "@tanstack/react-query";
-import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 
-const MyBuyers = () => {
-//   const [users, setUsers] = useState([]);
+const AllUsers = () => {
   const {data : users=[],refetch } =useQuery({
     queryKey:['users'],
     queryFn: async()=>{
@@ -13,11 +10,6 @@ const MyBuyers = () => {
         return data
     }
   })
-//   useEffect(() => {
-//     fetch("http://localhost:5000/users")
-//       .then((res) => res.json())
-//       .then((data) => setUsers(data));
-//   }, []);
   const handleAdmin =(id)=>{
         fetch(`http://localhost:5000/users/admin/${id}`,{
             method : "PUT",
@@ -66,4 +58,4 @@ const MyBuyers = () => {
   );
 };
 
-export default MyBuyers;
+export default AllUsers;

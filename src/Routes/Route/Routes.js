@@ -12,6 +12,7 @@ import PrivetRouter from "../PrivetRouter/PrivetRouter";
 import AllUsers from '../../Pages/Dashbord/AllUsers/AllUsers'
 import AdminRoute from "../PrivetRouter/AdminRouter/AdminRoute";
 import AllSeller from "../../Pages/Dashbord/AllSeller/AllSeller";
+import AllBuyers from "../../Pages/Dashbord/allBuyer/AllBuyers";
 
 const router = createBrowserRouter([
     {
@@ -54,6 +55,9 @@ const router = createBrowserRouter([
             },
             {
                 path : '/dashbord/seller', element: <AllSeller></AllSeller>
+            },
+            {
+                path : '/dashbord/buyers', element: <AllBuyers></AllBuyers>
             },
         ]
     }
