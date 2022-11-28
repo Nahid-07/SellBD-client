@@ -36,7 +36,7 @@ const AddProduct = () => {
       email : user.email,
       date
     };
-    fetch('http://localhost:5000/product',{
+    fetch('https://assignment-12-server-flame.vercel.app/product',{
         method : "POST",
         headers:{
             "content-type" : "application/json"

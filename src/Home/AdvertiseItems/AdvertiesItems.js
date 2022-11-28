@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 const AdvertiesItems = () => {
   const [adverties, setAdverties] = useState([]);
   useEffect(() => {
-    axios.get(`http://localhost:5000/products/adverties`).then((res) => {
+    axios.get(`https://assignment-12-server-flame.vercel.app/products/adverties`).then((res) => {
       setAdverties(res.data);
     });
   }, []);

@@ -22,7 +22,7 @@ const BookNowModal = ({phone}) => {
       img : phone.img,
       price : phone.sellingPrice
     };
-    fetch('http://localhost:5000/buyer',{
+    fetch('https://assignment-12-server-flame.vercel.app/buyer',{
       method : "POST",
       headers:{
         "content-type" : "application/json"

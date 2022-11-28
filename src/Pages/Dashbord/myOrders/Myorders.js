@@ -11,7 +11,7 @@ const Myorders = () => {
       queryKey: ["myOrders", user?.email],
       queryFn: async () => {
         const res = await fetch(
-          `http://localhost:5000/myorders?email=${user?.email}`,{
+          `https://assignment-12-server-flame.vercel.app/myorders?email=${user?.email}`,{
             headers : {
                 authorization : `bearer ${localStorage.getItem('Token')}`
             }

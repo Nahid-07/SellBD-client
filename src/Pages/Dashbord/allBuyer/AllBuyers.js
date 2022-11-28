@@ -6,7 +6,7 @@ const AllBuyers = () => {
   const {data : buyers=[], refetch} = useQuery({
     queryKey:['buyer'],
     queryFn:async()=>{
-      const res = await fetch(`http://localhost:5000/users/buyer`)
+      const res = await fetch(`https://assignment-12-server-flame.vercel.app/users/buyer`)
       const data = await res.json()
       return data
     }
@@ -15,7 +15,7 @@ const AllBuyers = () => {
     // Buyer will delete after hitting ta api
 
     const handleDelete = id =>{
-      fetch(`http://localhost:5000/allbuyer/${id}`,{
+      fetch(`https://assignment-12-server-flame.vercel.app/allbuyer/${id}`,{
         method : "DELETE"
       })
       .then(res => res.json())

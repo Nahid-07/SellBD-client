@@ -10,7 +10,7 @@ const MyProducts = () => {
   const [product , setProduct] = useState('')
   console.log(product);
   useEffect(() => {
-    axios.get(`http://localhost:5000/myproduct/${user?.email}`).then((res) => {
+    axios.get(`https://assignment-12-server-flame.vercel.app/myproduct/${user?.email}`).then((res) => {
       setMyProduct(res.data);
     });
   }, [user?.email]);
@@ -21,7 +21,7 @@ const MyProducts = () => {
   const handleDelete = (id) => {
     const agree = window.confirm("Are you sure you want to delete this item ?");
     if (agree) {
-      fetch(`http://localhost:5000/product/adverties/${id}`, {
+      fetch(`https://assignment-12-server-flame.vercel.app/product/adverties/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
@@ -35,7 +35,7 @@ const MyProducts = () => {
     }
   };
   const handleAd = (pd) => {
-    fetch(`http://localhost:5000/products/adverties`,{
+    fetch(`https://assignment-12-server-flame.vercel.app/products/adverties`,{
           method : "POST",
           headers:{
             "content-type" : "application/json"

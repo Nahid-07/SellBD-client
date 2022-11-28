@@ -6,7 +6,7 @@ const AllSeller = () => {
   const {data : sellers=[], refetch} = useQuery({
     queryKey:['seller'],
     queryFn:async()=>{
-      const res = await fetch(`http://localhost:5000/users/seller`)
+      const res = await fetch(`https://assignment-12-server-flame.vercel.app/users/seller`)
       const data = await res.json()
       return data
     }
@@ -15,7 +15,7 @@ const AllSeller = () => {
 
   // deletede a seller
   const handleDelete = id =>{
-    fetch(`http://localhost:5000/allseller/${id}`,{
+    fetch(`https://assignment-12-server-flame.vercel.app/allseller/${id}`,{
       method:"DELETE"
     })
     .then(res => res.json())
@@ -32,7 +32,7 @@ const AllSeller = () => {
   const handleVerify =(id)=>{
     const agree = window.confirm("are you sure you want to verify the user ?")
     if(agree){
-      fetch(`http://localhost:5000/users/verify/${id}`,{
+      fetch(`https://assignment-12-server-flame.vercel.app/users/verify/${id}`,{
         method : "PUT",
         headers:{
             authorization : `bearer ${localStorage.getItem('Token')}`

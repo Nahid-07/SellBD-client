@@ -38,7 +38,7 @@ const router = createBrowserRouter([
             {
                 path:'/allcategoryphones/:id',
                 element: <PrivetRouter><AllCategoryPhones></AllCategoryPhones></PrivetRouter>,
-                loader:({params})=>fetch(`http://localhost:5000/category/${params.id}`)
+                loader:({params})=>fetch(`https://assignment-12-server-flame.vercel.app/category/${params.id}`)
             },
             {
                 path:'/blogs',
@@ -67,7 +67,7 @@ const router = createBrowserRouter([
             },
             {
                 path : '/dashbord/payment/:id', element: <Payment></Payment>,
-                loader : ({params})=> fetch(`http://localhost:5000/bookings/${params.id}`)
+                loader : ({params})=> fetch(`https://assignment-12-server-flame.vercel.app/bookings/${params.id}`)
             },
             {
                 path : '/dashbord/myproducts', element: <MyProducts></MyProducts>
