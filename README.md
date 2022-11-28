@@ -9,10 +9,12 @@
 * daisy ui
 * Mamba Ui
 * React Icons
-* Sweet alert 2
 * google font (poppins)
 * firebase auth
 * react hot toast
+* Axious
+* react hook form
+* react query
 ## for server technology
 * mongodb
 

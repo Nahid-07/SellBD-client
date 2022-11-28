@@ -20,6 +20,7 @@ const AddProduct = () => {
     const uses = form.uses.value;
     const sellerName = form.sellerName.value;
     const img = form.img.value;
+    const date = form.date.value
     const item = {
       name,
       model,
@@ -32,7 +33,8 @@ const AddProduct = () => {
       uses,
       sellerName,
       img,
-      email : user.email
+      email : user.email,
+      date
     };
     fetch('http://localhost:5000/product',{
         method : "POST",
@@ -94,6 +96,13 @@ const AddProduct = () => {
             name="location"
             type="text"
             placeholder="location"
+            className="input input-bordered w-full"
+            required
+          />
+          <input
+            name="date"
+            type="text"
+            placeholder="date (time)"
             className="input input-bordered w-full"
             required
           />

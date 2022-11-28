@@ -33,6 +33,9 @@ const DashBordLayOut = () => {
                 <li className="border-b-2 border-[#293462]">
                   <Link to="/dashbord/buyers">All Buyer</Link>
                 </li>
+                <li className="border-b-2 border-[#293462]">
+                  <Link to="/dashbord/reporteditems">Reported Items</Link>
+                </li>
               </>
             )}
 

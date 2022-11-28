@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 
 
 const AllSeller = () => {
@@ -26,6 +27,27 @@ const AllSeller = () => {
       }
     })
   }
+
+  // veryfy seller
+  const handleVerify =(id)=>{
+    const agree = window.confirm("are you sure you want to verify the user ?")
+    if(agree){
+      fetch(`http://localhost:5000/users/verify/${id}`,{
+        method : "PUT",
+        headers:{
+            authorization : `bearer ${localStorage.getItem('Token')}`
+        }
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(data)
+        if(data.modifiedCount> 0){
+            toast.success('User Verified')
+            refetch()
+        }
+    })
+    }
+}
   // console.log(sellers);
   return (
     <div className="overflow-x-auto">
@@ -36,6 +58,7 @@ const AllSeller = () => {
             <th>Name</th>
             <th>email</th>
             <th>Delete</th>
+            <th>Verfy User</th>
           </tr>
         </thead>
         <tbody>
@@ -46,6 +69,9 @@ const AllSeller = () => {
               <td>{slr.email}</td>
               <td>
                 <button onClick={()=>handleDelete(slr._id)} className="btn btn-sm bg-red-700">Delete</button>
+              </td>
+              <td>
+                <button onClick={()=>handleVerify(slr._id)} className="btn btn-sm bg-green-600">Verify</button>
               </td>
             </tr>
           ))}
