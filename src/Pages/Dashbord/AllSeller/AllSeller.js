@@ -40,7 +40,7 @@ const AllSeller = () => {
     })
     .then(res => res.json())
     .then(data => {
-        console.log(data)
+       
         if(data.modifiedCount> 0){
             toast.success('User Verified')
             refetch()
@@ -48,7 +48,7 @@ const AllSeller = () => {
     })
     }
 }
-  // console.log(sellers);
+  
   return (
     <div className="overflow-x-auto">
       <table className="table table-zebra w-full">

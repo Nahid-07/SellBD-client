@@ -10,7 +10,7 @@ const DashBordLayOut = () => {
   const { user } = useContext(AuthProvider);
   const [isAdmin] = useAdmin(user?.email);
   const [isSellers] = useSeller(user?.email);
-  const [isBuyers] = useBuyer(user?.email)
+  const [isBuyers] = useBuyer(user?.email);
   return (
     <div>
       <Navbar></Navbar>
@@ -39,11 +39,11 @@ const DashBordLayOut = () => {
               </>
             )}
 
-            {
-              isBuyers && <li className="border-b-2 border-[#293462]">
-              <Link to="/dashbord/myorders">My Orders</Link>
-            </li>
-            }
+            {isBuyers && (
+              <li className="border-b-2 border-[#293462]">
+                <Link to="/dashbord/myorders">My Orders</Link>
+              </li>
+            )}
 
             {isSellers && (
               <>

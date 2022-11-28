@@ -13,7 +13,6 @@ const Payment = () => {
     if(navigation.state === "loading"){
         return <Loader></Loader>
     }
-  console.log(data);
   return (
     <div>
       <h1>You are Payment for {productName}</h1>

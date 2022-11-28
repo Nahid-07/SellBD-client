@@ -43,13 +43,13 @@ const AddProduct = () => {
         },
         body: JSON.stringify(item)
     }).then(res => res.json()).then(data => {
-      console.log(data);
+     
       if(data.acknowledged){
         toast.success('Your product has been added')
         navigate('/dashbord/myproducts')
       }
     })
-    // console.log(item);
+    
     form.reset()
   };
   return (

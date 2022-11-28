@@ -4,7 +4,6 @@ import { FaArrowRight } from "react-icons/fa";
 import BookNowModal from "./BookNowModal";
 
 const Phones = ({phone}) => {
-  // console.log(phone);
   return (
     <div>
       <div className="max-w-lg p-4 shadow-md ">
@@ -61,6 +60,7 @@ const Phones = ({phone}) => {
                 <label
                   htmlFor="bookNow"
                   className="btn btn-sm btn-outline hover:bg-[#293462]"
+                  onClick={()=>(phone)}
                 >
                   Book now <FaArrowRight className="hover:text-white ml-1" />
                 </label>

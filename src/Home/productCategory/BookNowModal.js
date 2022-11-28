@@ -5,7 +5,6 @@ import { AuthProvider } from "../../Context/Context";
 const BookNowModal = ({phone}) => {
   console.log(phone.name);
   const { user } = useContext(AuthProvider);
-  // console.log(products);
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -23,7 +22,6 @@ const BookNowModal = ({phone}) => {
       img : phone.img,
       price : phone.sellingPrice
     };
-    console.log(buyerInfo);
     fetch('http://localhost:5000/buyer',{
       method : "POST",
       headers:{
