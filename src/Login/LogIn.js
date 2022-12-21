@@ -4,33 +4,32 @@ import toast from "react-hot-toast";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthProvider } from "../Context/Context";
 import useToken from "../Hooks/usehook";
-import Loader from "../Loader/Loader";
-
+// import Loader from "../Loader/Loader";
 
 const LogIn = () => {
   const { register, handleSubmit } = useForm();
-  const { logIn, googleLogin,loader } = useContext(AuthProvider);
-  const [error,setError] = useState('')
+  const { logIn, googleLogin } = useContext(AuthProvider);
+  const [error, setError] = useState("");
   const location = useLocation();
   let from = location.state?.from?.pathname || "/";
-  const [createdUserEmail, setCreatedUserEmail] = useState('')
-    const [token] = useToken(createdUserEmail);
-    const navigate = useNavigate();
+  const [createdUserEmail, setCreatedUserEmail] = useState("");
+  const [token] = useToken(createdUserEmail);
+  const navigate = useNavigate();
 
-    if(token){
-      navigate(from, { replace: true });
-    }
+  if (token) {
+    navigate(from, { replace: true });
+  }
   const handleLogin = (data) => {
     logIn(data.email, data.password)
       .then(() => {
-        setCreatedUserEmail(data.email)
-        
-        toast.success('Successfully logged in')
+        setCreatedUserEmail(data.email);
+
+        toast.success("Successfully logged in");
       })
       .catch((err) => {
-        setError(err.message)
+        setError(err.message);
       });
-      setError('')
+    setError("");
   };
   const handleGoogleLogIn = () => {
     googleLogin()
@@ -40,9 +39,6 @@ const LogIn = () => {
       })
       .catch((err) => console.log(err.message));
   };
-  if(loader){
-    return <Loader></Loader>
-  }
   return (
     <div className="max-w-7xl mx-auto flex justify-center items-center px-4">
       <form className="w-96 my-28" onSubmit={handleSubmit(handleLogin)}>
